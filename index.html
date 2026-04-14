@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KGM Real Estate | Kolkata General Maintenance and Properties Management SP LLC</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5e6c8;
+      line-height: 1.6;
+    }
+    html { scroll-behavior: smooth; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(1150px, 92%); margin: auto; }
+    .gold { color: #d4b07b; }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      border: 1px solid #d4b07b;
+    }
+    .btn-primary { background: #d4b07b; color: #111; }
+    .btn-primary:hover { background: #e5c898; transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: #f5e6c8; }
+    .btn-outline:hover { background: rgba(212,176,123,0.12); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 11, 11, 0.95);
+      border-bottom: 1px solid rgba(212,176,123,0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #111;
+      border: 1px solid rgba(212,176,123,0.25);
+      padding: 4px;
+    }
+
+    .brand-text h1 {
+      font-size: 1.1rem;
+      line-height: 1.2;
+      color: #fff3de;
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      color: #caa871;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: #ead9bb;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { color: #d4b07b; }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(0,0,0,0.66), rgba(0,0,0,0.75)),
+        radial-gradient(circle at top right, rgba(212,176,123,0.18), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(212,176,123,0.08), transparent 28%),
+        #0b0b0b;
+      border-bottom: 1px solid rgba(212,176,123,0.12);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 60px 0;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.1rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
+      color: #fff7eb;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #ead9bb;
+      max-width: 700px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card, .glass-card, .service-card, .project-card, .contact-card, .leader-card, .vision-card, .mission-card, .about-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,176,123,0.16);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .stat-card {
+      padding: 18px;
+      text-align: center;
+    }
+
+    .stat-card h3 { font-size: 1.8rem; color: #d4b07b; }
+    .stat-card p { margin: 6px 0 0; font-size: 0.92rem; }
+
+    .glass-card { padding: 30px; }
+    .glass-card h3 {
+      font-size: 1.55rem;
+      color: #fff1d8;
+      margin-bottom: 12px;
+    }
+
+    .glass-card ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: #ead9bb;
+    }
+
+    .glass-card li {
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(212,176,123,0.08);
+      border: 1px solid rgba(212,176,123,0.12);
+    }
+
+    section { padding: 85px 0; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: #fff5e4;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #d6c6aa;
+      max-width: 780px;
+      margin: 0 auto 42px;
+    }
+
+    .about-grid, .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .about-box {
+      padding: 28px;
+    }
+
+    .about-box h3 { margin-bottom: 12px; color: #fff0d3; }
+    .about-box p, .about-box li { color: #e4d4b5; }
+    .about-box ul { padding-left: 18px; display: grid; gap: 10px; }
+
+    .services-grid, .projects-grid, .leadership-grid, .vision-grid, .mission-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: repeat(3, 1fr); }
+    .leadership-grid { grid-template-columns: repeat(3, 1fr); }
+    .vision-grid { grid-template-columns: repeat(2, 1fr); }
+    .mission-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .service-card, .project-card, .contact-card, .leader-card, .vision-card, .mission-card {
+      padding: 24px;
+    }
+
+    .service-card h3, .project-card h3, .contact-card h3, .leader-card h3, .vision-card h3, .mission-card h3 {
+      color: #fff1d8;
+      margin-bottom: 10px;
+    }
+
+    .service-card p, .project-card p, .contact-card p, .contact-card li, .vision-card p, .mission-card p {
+      color: #ddcdb0;
+    }
+
+    .leader-card {
+      text-align: center;
+    }
+
+    .leader-card img {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 2px solid #d4b07b;
+      margin-bottom: 16px;
+      background: #111;
+    }
+
+    .leader-card p {
+      color: #d4b07b;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212,176,123,0.35);
+      transition: 0.25s ease;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-list a { color: #d4b07b; }
+
+    .footer {
+      padding: 30px 0;
+      border-top: 1px solid rgba(212,176,123,0.14);
+      text-align: center;
+      color: #cbb693;
+      background: #090909;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .services-grid,
+      .projects-grid,
+      .leadership-grid,
+      .vision-grid,
+      .mission-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats { grid-template-columns: 1fr; }
+      nav { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 12px; }
+    }
+
+    @media (max-width: 600px) {
+      .brand-text h1 { font-size: 0.95rem; }
+      .hero p { font-size: 0.98rem; }
+      .btn { width: 100%; text-align: center; }
+      .hero-actions { flex-direction: column; }
+      section { padding: 68px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <img src="signature.png" alt="KGM Logo" />
+          <div class="brand-text">
+            <h1>Kolkata General Maintenance and Properties Management SP LLC</h1>
+            <p>KGM Real Estate & Property Management</p>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="https://wa.me/971544767229" target="_blank">WhatsApp</a>
+          <a href="#about">About</a>
+          <a href="#leadership">Leadership</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h2>Trusted Property Management in <span class="gold">Abu Dhabi</span></h2>
+        <p>
+          KGM Real Estate manages residential, commercial, and mixed-use properties across Abu Dhabi with a strong focus on maintenance, tenant support, building operations, and professional property supervision.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/971544767229" target="_blank">WhatsApp Us</a>
+          <a class="btn btn-primary" href="#contact">Contact Us</a>
+          <a class="btn btn-outline" href="#projects">View Our Projects</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <h3>13+</h3>
+            <p>Projects Managed</p>
+          </div>
+          <div class="stat-card">
+            <h3>Abu Dhabi</h3>
+            <p>Core Service Area</p>
+          </div>
+          <div class="stat-card">
+            <h3>SP LLC</h3>
+            <p>Professional Management Company</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card">
+        <h3>Why Clients Choose KGM</h3>
+        <ul>
+          <li>Professional handling of multiple residential and commercial properties</li>
+          <li>Reliable building maintenance and day-to-day management support</li>
+          <li>Strong local presence in Abu Dhabi for quick coordination</li>
+          <li>Clear communication for tenants, owners, and investors</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About KGM</h2>
+      <p class="section-subtitle">
+        Founded on September 1, 2020, KGM is a dedicated one-person enterprise focused on investing in real estate and commercial buildings in Abu Dhabi.
+      </p>
+      <div class="about-grid">
+        <div class="about-box">
+          <h3>About Company</h3>
+          <p>
+            Kolkata General Maintenance and Properties Management operates primarily in the vibrant and rapidly growing Emirate of Abu Dhabi. The company specializes in identifying and nurturing valuable property investments and is committed to excellence in supporting the wider real estate sector.
+          </p>
+        </div>
+        <div class="about-box">
+          <h3>Company Focus</h3>
+          <ul>
+            <li>Real estate and commercial building investment</li>
+            <li>Property buying and selling support</li>
+            <li>Property investment advisory</li>
+            <li>Comprehensive property management</li>
+            <li>Long-term value creation for clients and stakeholders</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <div class="container">
+      <h2 class="section-title">Leadership</h2>
+      <p class="section-subtitle">
+        Meet the leadership team of KGM Real Estate.
+      </p>
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <img src="ceo.jpg" alt="Watheq Walid Qalawi CEO" />
+          <h3>Watheq Walid Qalawi</h3>
+          <p>CEO</p>
+        </div>
+
+        <div class="leader-card">
+          <img src="owner.jpg" alt="Shaikh Nurul Islam Mohamed Owner" />
+          <h3>Shaikh Nurul Islam Mohamed</h3>
+          <p>Owner</p>
+        </div>
+
+        <div class="leader-card">
+          <img src="mushraf.jpg" alt="Shaikh Mushraf Hussain Operation Manager" />
+          <h3>Shaikh Mushraf Hussain</h3>
+          <p>Operation Manager</p>
+        </div>
+
+        <div class="leader-card">
+          <img src="waleed.jpg" alt="Waleed Qalawi General Manager" />
+          <h3>Waleed Qalawi</h3>
+          <p>General Manager</p>
+        </div>
+
+        <div class="leader-card">
+          <img src="shoeb.jpg" alt="Shaikh Shoeb Administrative Accountant" />
+          <h3>Shaikh Shoeb</h3>
+          <p>Administrative / Accountant</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vision">
+    <div class="container">
+      <h2 class="section-title">Our Vision</h2>
+      <p class="section-subtitle">
+        Investing with integrity and delivering quality excellence in every project.
+      </p>
+      <div class="vision-grid">
+        <div class="vision-card">
+          <h3>Investing with Integrity</h3>
+          <p>To make strategic investments in real estate and commercial buildings that enhance the landscape of Abu Dhabi, contributing to its growth and prosperity.</p>
+        </div>
+        <div class="vision-card">
+          <h3>Quality and Excellence</h3>
+          <p>To uphold the highest standards of quality and excellence in all our projects, ensuring that our investments deliver long-term value to our clients and stakeholders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mission">
+    <div class="container">
+      <h2 class="section-title">Our Mission</h2>
+      <p class="section-subtitle">
+        Strategic, high-value, and community-focused growth across Abu Dhabi real estate.
+      </p>
+      <div class="mission-grid">
+        <div class="mission-card">
+          <h3>Strategic Investments</h3>
+          <p>Identifying and investing in high-potential real estate and commercial building projects that contribute to the region's development.</p>
+        </div>
+        <div class="mission-card">
+          <h3>Quality and Innovation</h3>
+          <p>Upholding the highest standards of quality and embracing innovative practices to ensure our projects deliver lasting value.</p>
+        </div>
+        <div class="mission-card">
+          <h3>Community Development</h3>
+          <p>Fostering a positive impact on the community by supporting sustainable and environmentally responsible development practices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">
+        Services adapted from the KGM company profile.
+      </p>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Property Buying</h3>
+          <p>Leveraging extensive market knowledge and experience, we assist clients in finding and purchasing their ideal properties.</p>
+        </div>
+        <div class="service-card">
+          <h3>Property Selling</h3>
+          <p>With a proven track record of successful sales, we help property owners sell their real estate assets at the best possible prices.</p>
+        </div>
+        <div class="service-card">
+          <h3>Property Investment</h3>
+          <p>We provide expert advice and strategic insights to clients looking to invest in real estate by identifying lucrative opportunities and offering market analysis.</p>
+        </div>
+        <div class="service-card">
+          <h3>Property Management</h3>
+          <p>We offer comprehensive property management services designed to maximize the value and performance of real estate investments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Our Projects</h2>
+      <p class="section-subtitle">
+        Projects listed in the company profile.
+      </p>
+      <div class="projects-grid">
+        <div class="project-card"><h3>Al Mulla Tower</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Al Raha Building</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Mina Building</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Tourist Club Building</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Future Tower</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Al Manara Building</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Sadaf Building</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Khalidya Building</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Hamdan Building</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>MBZ Building</h3><p>Managed project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Villa Albateen</h3><p>Managed villa project in Abu Dhabi.</p></div>
+        <div class="project-card"><h3>Bank of Sharjah Building</h3><p>Managed project in Abu Dhabi.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-subtitle">
+        Reach out to KGM for property management and maintenance support in Abu Dhabi.
+      </p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Company Information</h3>
+          <ul class="contact-list">
+            <li><strong>Company Name:</strong> Kolkata General Maintenance and Properties Management SP LLC</li>
+            <li><strong>Company Number:</strong> 026346001</li>
+            <li><strong>Phone:</strong> <a href="tel:+971559013143">+971 55 901 3143</a></li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/971544767229" target="_blank">+971 54 476 7229</a></li>
+            <li><strong>Email:</strong> <a href="mailto:kbmandpm@gmail.com">kbmandpm@gmail.com</a></li>
+            <li><strong>PO Box:</strong> 43009 Abu Dhabi - UAE</li>
+            <li><strong>Address:</strong> Abu Dhabi, Tourist Club Area, HSR Building, M3</li>
+          </ul>
+        </div>
+
+        <div class="contact-card">
+          <h3>Quick Message</h3>
+          <p>
+            This website layout is ready for future editing. You can later change text, colors, projects, photos, services, and contact details anytime.
+          </p>
+          <br />
+          <a class="btn btn-primary" href="https://wa.me/971544767229" target="_blank">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 KGM Real Estate | Kolkata General Maintenance and Properties Management SP LLC. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
